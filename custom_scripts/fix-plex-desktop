@@ -1,0 +1,14 @@
+#!/usr/bin/env bash
+
+set -e
+
+if [[ -f /opt/plex-desktop/bin/Plex ]]; then
+  echo "🔧 Patching Plex Desktop RUNPATHs..."
+  chrpath -r '$ORIGIN/../lib' /opt/plex-desktop/bin/Plex
+  chrpath -r '$ORIGIN/../lib' "/opt/plex-desktop/bin/Plex Transcoder"
+
+  echo "✂️  Removing LD_LIBRARY_PATH from Plex.sh..."
+  sed -i '/LD_LIBRARY_PATH/d' /opt/plex-desktop/Plex.sh
+else
+  echo "⚠️  Plex binaries not found — skipping fix."
+fi

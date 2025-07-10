@@ -62,7 +62,11 @@ setup-neovim:
 setup-pacman:
 	@echo "📦 Copying pacman configuration"
 	sudo rm -f /etc/pacman.conf
-	ln -sf {{PROJECT_DIR}}/pacman/pacman.conf /etc/pacman.conf
+	sudo ln -sf {{PROJECT_DIR}}/pacman/pacman.conf /etc/pacman.conf
+
+	@echo "🔗 Symlinking custom plex-desktop fix script - Refer pinned comment in https://aur.archlinux.org/packages/plex-desktop"
+	sudo rm -f /usr/local/bin/plex-desktop-fix
+	sudo ln -sf {{PROJECT_DIR}}/custom-scripts/plex-desktop-fix.sh /usr/local/bin/plex-desktop-fix
 
 	@echo "🧹 Cleaning up old hook symlinks in {{PACMAN_HOOKS_DIR}}..."; \
 	if [ -d {{PACMAN_HOOKS_DIR}} ]; then \

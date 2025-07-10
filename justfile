@@ -10,6 +10,7 @@ install-paru:
 	git clone https://aur.archlinux.org/paru.git /tmp/paru
 	cd /tmp/paru && makepkg -si --noconfirm
 	rm -rf /tmp/paru
+	sudo ln -sf {{PROJECT_DIR}}/paru/paru.conf /etc/paru.conf
 	
 # Symlink bashrc and install required packages
 setup-bashrc:

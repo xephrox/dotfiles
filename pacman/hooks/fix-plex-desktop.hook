@@ -1,0 +1,10 @@
+[Trigger]
+Operation = Install
+Operation = Upgrade
+Type = Path
+Target = /opt/plex-desktop/bin/Plex
+
+[Action]
+Description = Fixing Plex Desktop RUNPATHs and environment...
+When = PostTransaction
+Exec = /usr/local/bin/fix-plex-desktop

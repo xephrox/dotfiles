@@ -74,7 +74,8 @@ alias grep='grep --color=auto'
 alias vim='nvim'
 
 # Custom quick access
-alias codetime='cd /storage/media/code && nvim .'
+alias cdc='cd /storage/media/code'
+alias devtime='cdc && just dev'
 
 # Recursive delete
 alias rmd='/bin/rm --recursive --force --verbose'

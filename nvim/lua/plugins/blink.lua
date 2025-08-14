@@ -1,4 +1,11 @@
 return {
   "saghen/blink.cmp",
-  enabled = false,
+  opts = {
+    keymap = {
+      preset = "default",
+      ["<A-j>"] = { "select_next", "fallback" },
+      ["<A-k>"] = { "select_prev", "fallback" },
+      ["<Tab>"] = { "accept", "fallback" },
+    },
+  },
 }

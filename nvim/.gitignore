@@ -1,4 +1,8 @@
-.neoconf.json
-lazy-lock.json
-lazyvim.json
-stylua.toml
+tt.*
+.tests
+doc/tags
+debug
+.repro
+foo.*
+*.log
+data

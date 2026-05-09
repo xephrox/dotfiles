@@ -1,0 +1,15 @@
+# Case-insensitive completion
+set completion-ignore-case on
+
+# Single Tab shows all matches when ambiguous
+set show-all-if-ambiguous on
+
+# Visible bell instead of audible
+set bell-style visible
+
+# Show completion type indicators (/ for dirs, * for executables, etc.)
+set visible-stats on
+
+# Colour completions by type
+set colored-stats on
+set colored-completion-prefix on

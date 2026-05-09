@@ -1,0 +1,211 @@
+"$schema" = 'https://starship.rs/config-schema.json'
+
+format = """
+[](blue)\
+$os\
+$sudo\
+$username\
+[](bg:sapphire fg:blue)\
+$hostname\
+[](bg:teal fg:sapphire)\
+$directory\
+[](bg:green fg:teal)\
+$git_branch\
+$git_status\
+[](fg:green bg:mauve)\
+$c\
+$rust\
+$golang\
+$nodejs\
+$php\
+$java\
+$kotlin\
+$haskell\
+$python\
+[](fg:mauve bg:sky)\
+$conda\
+[](fg:sky bg:lavender)\
+$time\
+[ ](fg:lavender)\
+$cmd_duration\
+$line_break\
+$character"""
+
+palette = 'catppuccin_frappe'
+
+[os]
+disabled = false
+style = "bg:blue fg:crust"
+
+[os.symbols]
+Windows = ""
+Ubuntu = "󰕈"
+SUSE = ""
+Raspbian = "󰐿"
+Mint = "󰣭"
+Macos = "󰀵"
+Manjaro = ""
+Linux = "󰌽"
+Gentoo = "󰣨"
+Fedora = "󰣛"
+Alpine = ""
+Amazon = ""
+Android = ""
+Arch = "󰣇"
+Artix = "󰣇"
+CentOS = ""
+Debian = "󰣚"
+Redhat = "󱄛"
+RedHatEnterprise = "󱄛"
+
+[hostname]
+ssh_only = false
+ssh_symbol = "  "
+style = "bg:sapphire fg:crust"
+disabled = false
+format = '[$ssh_symbol$hostname]($style)'
+
+[username]
+show_always = true
+style_user = "bg:blue fg:crust"
+style_root = "bg:blue fg:crust"
+format = '[ $user]($style)'
+
+[sudo]
+style = "bg:blue fg:crust"
+symbol = ""
+format = '[ $symbol]($style)'
+disabled = false
+
+[directory]
+style = "bg:teal fg:crust"
+format = "[ $path ]($style)"
+truncation_length = 3
+truncation_symbol = "…/"
+
+[directory.substitutions]
+"Documents" = "󰈙 "
+"Downloads" = " "
+"Music" = "󰝚 "
+"Pictures" = " "
+"Developer" = "󰲋 "
+
+[git_branch]
+symbol = ""
+style = "bg:green"
+format = '[[ $symbol $branch ](fg:crust bg:green)]($style)'
+
+[git_status]
+style = "bg:green"
+format = '[[($all_status$ahead_behind )](fg:crust bg:green)]($style)'
+
+[nodejs]
+symbol = ""
+style = "bg:mauve"
+format = '[[ $symbol( $version) ](fg:crust bg:mauve)]($style)'
+
+[c]
+symbol = " "
+style = "bg:mauve"
+format = '[[ $symbol( $version) ](fg:crust bg:mauve)]($style)'
+
+[rust]
+symbol = ""
+style = "bg:mauve"
+format = '[[ $symbol( $version) ](fg:crust bg:mauve)]($style)'
+
+[golang]
+symbol = ""
+style = "bg:mauve"
+format = '[[ $symbol( $version) ](fg:crust bg:mauve)]($style)'
+
+[php]
+symbol = ""
+style = "bg:mauve"
+format = '[[ $symbol( $version) ](fg:crust bg:mauve)]($style)'
+
+[java]
+symbol = " "
+style = "bg:mauve"
+format = '[[ $symbol( $version) ](fg:crust bg:mauve)]($style)'
+
+[kotlin]
+symbol = ""
+style = "bg:mauve"
+format = '[[ $symbol( $version) ](fg:crust bg:mauve)]($style)'
+
+[haskell]
+symbol = ""
+style = "bg:mauve"
+format = '[[ $symbol( $version) ](fg:crust bg:mauve)]($style)'
+
+[python]
+symbol = ""
+style = "bg:mauve"
+format = '[[ $symbol( $version)(\(#$virtualenv\)) ](fg:crust bg:mauve)]($style)'
+
+[docker_context]
+symbol = ""
+style = "bg:sky"
+format = '[[ $symbol( $context) ](fg:crust bg:sky)]($style)'
+
+[conda]
+symbol = "  "
+style = "fg:crust bg:sky"
+format = '[$symbol$environment ]($style)'
+ignore_base = false
+
+[time]
+disabled = false
+time_format = "%R"
+style = "bg:lavender"
+format = '[[  $time ](fg:crust bg:lavender)]($style)'
+
+[line_break]
+disabled = true
+
+[character]
+disabled = false
+success_symbol = '[❯](bold fg:green)'
+error_symbol = '[❯](bold fg:red)'
+vimcmd_symbol = '[❮](bold fg:green)'
+vimcmd_replace_one_symbol = '[❮](bold fg:lavender)'
+vimcmd_replace_symbol = '[❮](bold fg:lavender)'
+vimcmd_visual_symbol = '[❮](bold fg:yellow)'
+
+[cmd_duration]
+show_milliseconds = true
+format = " in $duration "
+style = "bg:lavender"
+disabled = false
+show_notifications = true
+min_time_to_notify = 45000
+
+
+[palettes.catppuccin_frappe]
+rosewater = "#f2d5cf"
+flamingo = "#eebebe"
+pink = "#f4b8e4"
+mauve = "#ca9ee6"
+red = "#e78284"
+maroon = "#ea999c"
+peach = "#ef9f76"
+yellow = "#e5c890"
+green = "#a6d189"
+teal = "#81c8be"
+sky = "#99d1db"
+sapphire = "#85c1dc"
+blue = "#8caaee"
+lavender = "#babbf1"
+text = "#c6d0f5"
+subtext1 = "#b5bfe2"
+subtext0 = "#a5adce"
+overlay2 = "#949cbb"
+overlay1 = "#838ba7"
+overlay0 = "#737994"
+surface2 = "#626880"
+surface1 = "#51576d"
+surface0 = "#414559"
+base = "#303446"
+mantle = "#292c3c"
+crust = "#232634"

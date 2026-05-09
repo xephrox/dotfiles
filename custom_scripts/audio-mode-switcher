@@ -1,0 +1,63 @@
+#!/bin/bash
+
+SCARLETT_OUT="alsa_output.usb-Focusrite_Scarlett_2i2_4th_Gen_S20U16H5A3BF70-00.pro-output-0"
+SCARLETT_IN="alsa_input.usb-Focusrite_Scarlett_2i2_4th_Gen_S20U16H5A3BF70-00.pro-input-0"
+MAXWELL_OUT="alsa_output.usb-Audeze_LLC_Audeze_Maxwell_Dongle_0000000000000000-01.pro-output-0"
+MAXWELL_IN="alsa_input.usb-Audeze_LLC_Audeze_Maxwell_Dongle_0000000000000000-01.pro-input-0"
+STATE_FILE="/tmp/audio-mode"
+
+disconnect_all() {
+    # Disconnect Virtual_Speaker monitor from any output
+    pw-link -d "Virtual_Speaker_Exhaust:output_AUX0" "$SCARLETT_OUT:playback_AUX0" 2>/dev/null
+    pw-link -d "Virtual_Speaker_Exhaust:output_AUX1" "$SCARLETT_OUT:playback_AUX1" 2>/dev/null
+    pw-link -d "Virtual_Speaker_Exhaust:output_AUX0" "$MAXWELL_OUT:playback_AUX0" 2>/dev/null
+    pw-link -d "Virtual_Speaker_Exhaust:output_AUX1" "$MAXWELL_OUT:playback_AUX1" 2>/dev/null
+
+    # Disconnect any input from Virtual_Mic
+    pw-link -d "$SCARLETT_IN:capture_AUX0" "Virtual_Mic_Intake:input_AUX0" 2>/dev/null
+    pw-link -d "$MAXWELL_IN:capture_AUX0" "Virtual_Mic_Intake:input_AUX0" 2>/dev/null
+}
+
+connect_desk() {
+    # Connect Virtual Speaker to Scarlet Output
+    pw-link "Virtual_Speaker_Exhaust:output_AUX0" "$SCARLETT_OUT:playback_AUX0"
+    pw-link "Virtual_Speaker_Exhaust:output_AUX1" "$SCARLETT_OUT:playback_AUX1"
+    # Connect Scarlett Input to Virtual Mic
+    pw-link "$SCARLETT_IN:capture_AUX0" "Virtual_Mic_Intake:input_AUX0"
+}
+
+connect_wireless() {
+    # Connect Virtual Speaker to Maxwell Output
+    pw-link "Virtual_Speaker_Exhaust:output_AUX0" "$MAXWELL_OUT:playback_AUX0"
+    pw-link "Virtual_Speaker_Exhaust:output_AUX1" "$MAXWELL_OUT:playback_AUX1"
+    # Connect Maxwell Input to Virtual Mic
+    pw-link "$MAXWELL_IN:capture_AUX0" "Virtual_Mic_Intake:input_AUX0"
+}
+
+switch_to_desk() {
+    echo "desk" > "$STATE_FILE"
+    disconnect_all
+    sleep 0.5
+    connect_desk
+    notify-send "Audio Mode" "🎙 Desk Mode (SM7B + DT990)" --icon=audio-headset
+}
+
+switch_to_wireless() {
+    echo "wireless" > "$STATE_FILE"
+    disconnect_all
+    sleep 0.5
+    connect_wireless
+    notify-send "Audio Mode" "🎧 Wireless Mode (Audeze Maxwell)" --icon=audio-headset
+}
+
+MODE=${1:-""}
+
+if [ "$MODE" = "desk" ]; then
+    switch_to_desk
+elif [ "$MODE" = "wireless" ]; then
+    switch_to_wireless
+elif [ -f "$STATE_FILE" ] && [ "$(cat $STATE_FILE)" = "wireless" ]; then
+    switch_to_desk
+else
+    switch_to_wireless
+fi

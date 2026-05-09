@@ -1,0 +1,2 @@
+#!/bin/bash
+wpctl set-mute $(wpctl status | grep -m1 "Virtual_Mic" | grep -oP '\d+(?=\.)') toggle

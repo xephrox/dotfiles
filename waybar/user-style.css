@@ -1,0 +1,12 @@
+/* User custom styles */
+#pulseaudio.microphone.source-muted {
+    color: #ff0000;
+}
+
+#custom-audiomode.desk {
+    color: #89b4fa; /* blue */
+}
+
+#custom-audiomode.wireless {
+    color: #cba6f7; /* purple */
+}

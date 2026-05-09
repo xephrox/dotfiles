@@ -1,0 +1,5 @@
+# Packages to exclude from HyDE installation
+kitty                                                  # replaced by alacritty
+vim                                                    # replaced by neovim
+code                                                   # replaced by neovim
+dolphin                                                # replaced by thunar (avoids baloo background indexer)

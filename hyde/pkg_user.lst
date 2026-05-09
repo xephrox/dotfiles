@@ -1,0 +1,43 @@
+# --------------------------------------------------- // Shell
+bash-completion                                        # programmable bash completion
+trash-cli                                              # safe rm replacement (trash command)
+bat                                                    # enhanced cat with syntax highlighting
+ncompress                                              # compress/uncompress utilities (used by extract())
+
+# --------------------------------------------------- // Editor
+neovim                                                 # text editor
+lazygit                                                # git TUI
+ripgrep                                                # fast grep replacement
+ripgrep-all                                            # ripgrep across all file types (AUR)
+fd                                                     # fast find replacement
+
+# --------------------------------------------------- // Terminal
+alacritty                                              # GPU-accelerated terminal emulator
+tmux                                                   # terminal multiplexer
+
+# --------------------------------------------------- // Communication
+discord                                                # Discord client
+kdeconnect                                             # Android phone integration (SMS, clipboard, files)
+
+# --------------------------------------------------- // Gaming
+steam                                                  # Steam (requires multilib repo)
+gamemode                                               # daemon for game performance optimisations
+protonplus                                             # GUI for managing Proton/Wine versions (AUR)
+
+# --------------------------------------------------- // Audio
+alsa-scarlett-gui                                      # ALSA GUI for Focusrite Scarlett interfaces
+qpwgraph                                               # PipeWire patchbay / graph GUI
+
+# --------------------------------------------------- // Browser
+firefox                                                # web browser (also in HyDE core, listed for clarity)
+
+# --------------------------------------------------- // Files
+thunar                                                 # lightweight GTK file manager (replaces dolphin)
+thunar-archive-plugin                                  # right-click archive support in Thunar
+
+# --------------------------------------------------- // Utilities
+rar                                                    # RAR archive support (AUR)
+chrpath                                                # binary RPATH editor — used by fix-plex-desktop hook
+
+# --------------------------------------------------- // Media
+plex-desktop                                           # Plex media player (AUR)

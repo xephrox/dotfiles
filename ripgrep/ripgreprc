@@ -1,0 +1,11 @@
+# Smart case: case-insensitive unless pattern has uppercase
+--smart-case
+
+# Search hidden files and directories by default
+--hidden
+
+# Always exclude .git directory
+--glob=!.git
+
+# Follow symlinks
+--follow

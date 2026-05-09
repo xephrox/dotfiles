@@ -1,0 +1,10 @@
+{
+  "custom/audiomode": {
+    "return-type": "json",
+    "exec": "mode=$(cat /tmp/audio-mode 2>/dev/null || echo 'desk'); if [ \"$mode\" = 'desk' ]; then echo '{\"text\":\"🎙 Desk\",\"class\":\"desk\"}'; else echo '{\"text\":\"🎧 Wireless\",\"class\":\"wireless\"}'; fi",
+    "interval": 2,
+    "format": "{}",
+    "on-click": "/usr/local/bin/audio-switch",
+    "tooltip": false
+  }
+}

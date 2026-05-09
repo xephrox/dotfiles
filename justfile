@@ -12,6 +12,7 @@ OS := `command -v pacman > /dev/null 2>&1 && echo "arch" || (command -v apt-get 
 setup-arch:
     just setup-pacman
     just install-paru
+    just install-packages-arch
     just setup-shell
     just setup-starship
     just setup-neovim
@@ -36,6 +37,7 @@ setup-server:
     just setup-ripgrep
     just setup-gitconfig
     just setup-inputrc
+    just setup-cli-tools
 
 # ── Applications ──────────────────────────────────────────────────────────────
 
@@ -57,6 +59,37 @@ install-paru:
         rm -rf /tmp/paru
     fi
     sudo ln -sf "{{PROJECT_DIR}}/paru/paru.conf" /etc/paru.conf
+
+# Install all packages from pkg_user.lst using paru (Arch only — HyDE-independent)
+install-packages-arch:
+    #!/usr/bin/env bash
+    set -e
+    if [ "{{OS}}" != "arch" ]; then
+        echo "This recipe is Arch-only"
+        exit 1
+    fi
+    echo "Installing user packages from pkg_user.lst"
+    packages=$(grep -v '^\s*#' "{{PROJECT_DIR}}/hyde/pkg_user.lst" | grep -v '^\s*$' | awk '{print $1}')
+    paru -S --needed $packages
+
+    echo "Enabling libvirt service"
+    sudo systemctl enable --now libvirtd
+    echo "Adding $USER to libvirt group (re-login required)"
+    sudo usermod -aG libvirt "$USER"
+
+# Install extra CLI utilities for servers (btop, ncdu, duf, jq, tree, mtr, rsync)
+setup-cli-tools:
+    #!/usr/bin/env bash
+    set -e
+    echo "Installing CLI utilities"
+    if [ "{{OS}}" = "arch" ]; then
+        sudo pacman -S --needed btop ncdu duf jq tree mtr rsync
+    elif [ "{{OS}}" = "debian" ]; then
+        sudo apt-get install -y btop ncdu duf jq tree mtr rsync
+    else
+        echo "Unsupported OS: {{OS}}"
+        exit 1
+    fi
 
 # Install and configure shell (fish on Arch, bash on servers)
 setup-shell:

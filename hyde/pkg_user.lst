@@ -3,6 +3,9 @@ bash-completion                                        # programmable bash compl
 trash-cli                                              # safe rm replacement (trash command)
 bat                                                    # enhanced cat with syntax highlighting
 ncompress                                              # compress/uncompress utilities (used by extract())
+tealdeer                                               # fast tldr client (Rust) — installs as tldr command
+btop                                                   # interactive process/resource monitor
+duf                                                    # modern df replacement — readable disk usage overview
 
 # --------------------------------------------------- // Editor
 neovim                                                 # text editor
@@ -18,11 +21,16 @@ tmux                                                   # terminal multiplexer
 # --------------------------------------------------- // Communication
 discord                                                # Discord client
 kdeconnect                                             # Android phone integration (SMS, clipboard, files)
+signal-desktop                                         # Signal messenger
 
 # --------------------------------------------------- // Gaming
 steam                                                  # Steam (requires multilib repo)
 gamemode                                               # daemon for game performance optimisations
 protonplus                                             # GUI for managing Proton/Wine versions (AUR)
+retroarch                                              # libretro frontend (system install, separate from Steam)
+retroarch-assets-ozone                                 # Ozone UI assets for RetroArch
+libretro-lrps2-git                                     # PS2 libretro core — PCSX2-based (AUR)
+libretro-play                                          # PS2 libretro core — Play! emulator
 
 # --------------------------------------------------- // Audio
 alsa-scarlett-gui                                      # ALSA GUI for Focusrite Scarlett interfaces
@@ -38,6 +46,17 @@ thunar-archive-plugin                                  # right-click archive sup
 # --------------------------------------------------- // Utilities
 rar                                                    # RAR archive support (AUR)
 chrpath                                                # binary RPATH editor — used by fix-plex-desktop hook
+xpad                                                   # desktop sticky notes
+rate-mirrors                                           # ranks Arch mirrors by speed — used by update-mirrors hook
+proton-vpn-gtk-app                                     # ProtonVPN GUI client
+proton-pass-bin                                        # Proton Pass password manager (AUR)
+
+# --------------------------------------------------- // Virtualisation
+virt-manager                                           # GUI for managing KVM/QEMU virtual machines
+qemu-full                                              # QEMU with all targets and tools
+libvirt                                                # virtualisation API daemon (required by virt-manager)
 
 # --------------------------------------------------- // Media
 plex-desktop                                           # Plex media player (AUR)
+vlc                                                    # media player
+vlc-plugin-ffmpeg                                      # ffmpeg codec support for VLC
